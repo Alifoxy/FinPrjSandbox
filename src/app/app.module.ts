@@ -7,8 +7,8 @@ import {OrderListComponent} from "./order-list.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OrderListComponent
+    OrderListComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
