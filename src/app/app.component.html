@@ -1,0 +1,27 @@
+<h1>Users</h1>
+<div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only" id="loading">Loading...</span>
+  </div>
+</div>
+<table class="table" id='tab'>
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">surname</th>
+    <th scope="col">Email</th>
+    <th scope="col">status</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders">
+    <td>{{ order.name }}</td>
+    <td>{{ order.surname }}</td>
+    <td>{{ order.email }}</td>
+    <td>{{ order.status }}</td>
+    <td> <button (click)="orderDetails(order.id)" class='btn btn-info' data-toggle="modal"
+                 data-target="#myModal">Details</button> </td>
+  </tr>
+  </tbody>
+</table>

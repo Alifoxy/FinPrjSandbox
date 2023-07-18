@@ -7,10 +7,10 @@ import { HttpClient } from "@angular/common/http";
 })
 
 export class OrdersService {
-  public baseUrl = "mysql://lego12:lego12@owu.linkpc.net:3306/lego12";
+  public baseURL = "http://lego12@owu.linkpc.net:3306/lego12";
+  constructor(private http: HttpClient) { }
 
-  constructor(private httpClient: HttpClient) { }
   public getOrders(): Observable<any> {
-    return this.httpClient.get(this.baseUrl);
+    return this.http.get(`${this.baseURL}/orders`);
   }
 }
