@@ -1,17 +1,17 @@
-export class Order {
-  id!: number;
-  name!: String;
-  surname!: String;
-  email!: String;
-  phone!: number;
-  age!: number;
-  course!: String;
-  course_format!: String;
-  course_type!: String;
-  status!: String;
-  sum!: number;
-  already_paid!: number;
-  group!: String;
-  created_at!: String;
-  manager!: String;
+export interface Order {
+  id: number;
+  name: string;
+  surname: string;
+  email: string;
+  phone: number;
+  age: number;
+  course: string;
+  course_format: string;
+  course_type: string;
+  status: string;
+  sum: number;
+  already_paid: number;
+  group: string;
+  created_at: string;
+  manager: string;
 }

@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
+import {delay, Observable} from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import {Order} from "./order";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class OrdersService {
-  public baseURL = "http://lego12@owu.linkpc.net:3306/lego12";
+  public baseURL = "http://lego12@owu.linkpc.net/mysql";
   constructor(private http: HttpClient) { }
 
-  public getOrders(): Observable<any> {
-    return this.http.get(`${this.baseURL}/orders`);
+  getOrders(): Observable<Order[]> {
+    return this.http.post<Order[]>('http://localhost:3006/auth/login')
+      .pipe(delay(500))
   }
 }
