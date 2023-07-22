@@ -1,0 +1,47 @@
+.card{
+  width: 370px;
+  height: 340px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: slategrey;
+  border-style: dashed;
+  border-width: 5px;
+  border-color: mediumspringgreen;
+  padding: 15px;
+}
+
+mat-card-title{
+  padding-top: 10px;
+  font-family: "Bowlby One SC",sans-serif;
+  font-size: 26px;
+  color: mediumspringgreen;
+}
+
+mat-form-field{
+  width: 250px;
+  height: 50px;
+  color: aliceblue;
+  font-size: 18px;
+  font-family: "BankGothic Md BT",sans-serif;
+  padding: 5px;
+}
+
+.button{
+  background-color: lightseagreen;
+  width: 100px;
+  height: 50px;
+  font-size: 24px;
+  font-family: "BankGothic Md BT",sans-serif;
+}
+
+div{
+  padding: 15px;
+}
+
+.actions{
+  display: flex;
+  justify-content: right;
+  color: aliceblue;
+}
+

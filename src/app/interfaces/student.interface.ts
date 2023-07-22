@@ -1,4 +1,4 @@
-export interface Order {
+export interface IStudent {
   id: number;
   name: string;
   surname: string;
@@ -14,4 +14,6 @@ export interface Order {
   group: string;
   created_at: string;
   manager: string;
+
+
 }

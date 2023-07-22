@@ -1,0 +1,12 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false"
+                       *ngFor="let student of students">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{student.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-student [student]="student"></app-student>
+  </mat-expansion-panel>
+</mat-accordion>

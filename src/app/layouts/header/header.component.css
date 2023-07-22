@@ -1,0 +1,35 @@
+.links {
+  display: flex;
+}
+
+.links div{
+  display: flex;
+  padding: 7px 10px 0 0;
+  justify-content: space-around;
+}
+
+
+.links div:hover {
+  cursor: pointer;
+}
+
+.tool-bar {
+  justify-content: space-between;
+  background-color: darkcyan;
+  border-radius: 10px;
+  padding: 20px;
+  color: aliceblue;
+  font-family: "Bowlby One SC",sans-serif;
+
+
+}
+
+.active {
+  color: springgreen;
+}
+.site_name{
+  font-size: 20px;
+}
+.example-icon{
+  color: springgreen;
+}

@@ -15,14 +15,14 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
   }
 
-  login(user: IAuth): Observable<ITokens> {
-    return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
-      tap((tokens) => {
-        this._setTokens(tokens)
-        this.me().subscribe(user => this.setAuthUser(user))
-      })
-    )
-  }
+  // login(user: IAuth): Observable<ITokens> {
+  //   return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
+  //     tap((tokens) => {
+  //       this._setTokens(tokens)
+  //       this.me().subscribe(user => this.setAuthUser(user))
+  //     })
+  //   )
+  // }
 
   refresh(refresh: string): Observable<ITokens> {
     return this.httpClient.post<ITokens>(urls.auth.refresh, {refresh}).pipe(
@@ -32,17 +32,17 @@ export class AuthService {
     )
   }
 
-  me(): Observable<IAuth> {
-    return this.httpClient.get<IAuth>(urls.auth.me)
+  login(user: IAuth): Observable<IAuth> {
+    return this.httpClient.post<IAuth>(urls.auth.login, user)
   }
 
   getAuthUser(): Observable<IAuth | null> {
     return this.authUserSubject.asObservable()
   }
 
-  setAuthUser(user: IAuth | null): void {
-    this.authUserSubject.next(user)
-  }
+  // setAuthUser(user: IAuth | null): void {
+  //   this.authUserSubject.next(user)
+  // }
 
   private _setTokens({access, refresh}: ITokens): void {
     localStorage.setItem(this._accessTokenKey, access)
@@ -61,4 +61,5 @@ export class AuthService {
     localStorage.removeItem(this._accessTokenKey)
     localStorage.removeItem(this._refreshTokenKey)
   }
+
 }
