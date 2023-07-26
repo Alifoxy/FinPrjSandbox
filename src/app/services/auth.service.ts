@@ -15,14 +15,14 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
   }
 
-  // login(user: IAuth): Observable<ITokens> {
-  //   return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
-  //     tap((tokens) => {
-  //       this._setTokens(tokens)
+  login(user: IAuth): Observable<ITokens> {
+    return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
+      tap((tokens) => {
+           this._setTokens(tokens)
   //       this.me().subscribe(user => this.setAuthUser(user))
-  //     })
-  //   )
-  // }
+      })
+    )
+  }
 
   refresh(refresh: string): Observable<ITokens> {
     return this.httpClient.post<ITokens>(urls.auth.refresh, {refresh}).pipe(
@@ -32,8 +32,8 @@ export class AuthService {
     )
   }
 
-  login(user: IAuth): Observable<IAuth> {
-    return this.httpClient.post<IAuth>(urls.auth.login, user)
+  auth(): Observable<IAuth> {
+    return this.httpClient.get<IAuth>(urls.auth.login)
   }
 
   getAuthUser(): Observable<IAuth | null> {

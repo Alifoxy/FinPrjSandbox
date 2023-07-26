@@ -10,7 +10,7 @@ const urls = {
   auth: {
     login: `${auth}/login`,
     refresh:`${auth}/refresh`,
-    // me: `${auth}/login`
+    auth: `${auth}`
   },
   students: {
     full: students,
