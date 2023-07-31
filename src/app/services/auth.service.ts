@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {IAuth, ITokens} from "../interfaces";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {urls} from "../constants";
+import {IPagination} from "../interfaces/pagination.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class AuthService {
     return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
       tap((tokens) => {
            this._setTokens(tokens)
-  //       this.me().subscribe(user => this.setAuthUser(user))
+           this.auth().subscribe(user => this.setAuthUser(user))
       })
     )
   }
@@ -33,16 +34,16 @@ export class AuthService {
   }
 
   auth(): Observable<IAuth> {
-    return this.httpClient.get<IAuth>(urls.auth.login)
+    return this.httpClient.get<IAuth>(urls.auth.auth)
   }
 
   getAuthUser(): Observable<IAuth | null> {
     return this.authUserSubject.asObservable()
   }
 
-  // setAuthUser(user: IAuth | null): void {
-  //   this.authUserSubject.next(user)
-  // }
+  setAuthUser(user: IAuth | null): void {
+    this.authUserSubject.next(user)
+  }
 
   private _setTokens({access, refresh}: ITokens): void {
     localStorage.setItem(this._accessTokenKey, access)

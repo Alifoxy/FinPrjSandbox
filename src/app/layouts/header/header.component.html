@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="tool-bar">
   <div class="site_name">Programming School</div>
-  <div *ngIf="user">{{user.username}}</div>
+  <div *ngIf="user">{{user.email}}</div>
   <div class="links" *ngIf="!user">
     <div>
       <div routerLink="auth/login" routerLinkActive="active">Login</div>

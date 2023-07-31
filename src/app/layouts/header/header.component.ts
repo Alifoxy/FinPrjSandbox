@@ -10,7 +10,7 @@ import {AuthService} from "../../services";
 export class HeaderComponent implements OnInit {
 
   user: IAuth | null;
-  auth: IAuth
+
 
   constructor(private authService: AuthService) {
   }
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
       if (value) {
         this.user = value
       } else {
-        this.authService.login(this.auth).subscribe(value => this.user = value)
+        this.authService.auth().subscribe(value => this.user = value)
       }
     })
   }
