@@ -20,7 +20,7 @@ export class AuthService {
     return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
       tap((tokens) => {
            this._setTokens(tokens)
-           this.auth().subscribe(user => this.setAuthUser(user))
+           this.getAuthUser().subscribe(user => this.setAuthUser(user))
       })
     )
   }
@@ -36,6 +36,7 @@ export class AuthService {
   auth(): Observable<IAuth> {
     return this.httpClient.get<IAuth>(urls.auth.auth)
   }
+
 
   getAuthUser(): Observable<IAuth | null> {
     return this.authUserSubject.asObservable()
