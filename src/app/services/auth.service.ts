@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {IAuth, ITokens} from "../interfaces";
-import {BehaviorSubject, Observable, tap} from "rxjs";
+import {BehaviorSubject, map, Observable, tap} from "rxjs";
 import {urls} from "../constants";
 import {IPagination} from "../interfaces/pagination.interface";
 
@@ -20,7 +20,16 @@ export class AuthService {
     return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
       tap((tokens) => {
            this._setTokens(tokens)
-           this.getAuthUser().subscribe(user => this.setAuthUser(user))
+           this.auth().subscribe(user => this.setAuthUser(user))
+      })
+    )
+  }
+
+  logins(user: IAuth): Observable<void> {
+    return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
+      map((tokens) => {
+        this._setTokens(tokens)
+        this.auth().subscribe(user => this.setAuthUser(user))
       })
     )
   }

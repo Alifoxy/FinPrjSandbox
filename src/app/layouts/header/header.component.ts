@@ -16,11 +16,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.getAuthUser().subscribe(value => {
+    this.authService.auth().subscribe(value => {
       if (value) {
         this.user = value
       } else {
-        this.authService.getAuthUser().subscribe(value => this.user = value)
+        this.authService.auth().subscribe(value => this.user = value)
       }
     })
   }
