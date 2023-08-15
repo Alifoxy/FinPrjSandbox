@@ -8,7 +8,7 @@ const users = `${API}/users`
 
 const urls = {
   auth: {
-    login: auth,
+    login: `${auth}/login`,
     refresh:`${auth}/refresh`,
     register: users,
     auth: auth

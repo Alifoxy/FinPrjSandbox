@@ -25,9 +25,10 @@ export class AuthService {
     )
   }
 
-  logins(user: IAuth): Observable<void> {
+  logins(user: IAuth): Observable<ITokens> {
+    console.log(user);
     return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
-      map((tokens) => {
+      tap((tokens) => {
         this._setTokens(tokens)
         this.auth().subscribe(user => this.setAuthUser(user))
       })
@@ -43,7 +44,7 @@ export class AuthService {
   }
 
   auth(): Observable<IAuth> {
-    return this.httpClient.get<IAuth>(urls.auth.auth)
+    return this.httpClient.get<IAuth>(urls.auth.login)
   }
 
 
