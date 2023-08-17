@@ -9,7 +9,7 @@ import {AuthService} from "../../services";
 })
 export class HeaderComponent implements OnInit {
 
-  user: IAuth | string;
+  user: IAuth ;
 
 
   constructor(private authService: AuthService) {

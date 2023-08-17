@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   auth(): Observable<IAuth> {
-    return this.httpClient.get<IAuth>(urls.auth.login)
+    return this.httpClient.get<IAuth>(urls.auth.auth)
   }
 
 
