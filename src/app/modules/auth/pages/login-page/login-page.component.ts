@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LoginFormComponent} from "../../components/login-form.component";
+import {IAuth} from "../../../../interfaces";
+import {AuthService} from "../../../../services";
 
 @Component({
   selector: 'app-login-page',
@@ -10,12 +12,14 @@ export class LoginPageComponent implements OnInit {
   constructor(private matDialog: MatDialog) {
   }
 
+
   ngOnInit(): void {
     this.matDialog.open(LoginFormComponent, {
       disableClose:true,
       enterAnimationDuration:'2s',
       exitAnimationDuration:'2s'
     })
+
   }
 
 }
