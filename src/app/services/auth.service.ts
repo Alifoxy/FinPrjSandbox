@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
   }
 
-  auth(user: IAuth): Observable<ITokens> {
+  login(user: IAuth): Observable<ITokens> {
     return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
       tap((tokens) => {
            this._setTokens(tokens)
@@ -45,8 +45,8 @@ export class AuthService {
     )
   }
 
-  login(): Observable<IAuth> {
-    return this.httpClient.get<IAuth>(urls.auth.login)
+  auth(): Observable<IAuth> {
+    return this.httpClient.get<IAuth>(urls.auth.auth)
   }
 
 
