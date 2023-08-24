@@ -9,19 +9,18 @@ import {AuthService} from "../../services";
 })
 export class HeaderComponent implements OnInit {
 
-  user: IAuth ;
+  user: IAuth | null ;
 
 
   constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.authService.getAuthUser().subscribe(value => {
-      if (value) {
-        this.user = value
-      } else {
-        this.authService.login().subscribe(value => this.user = value)
-      }
-    })
+    this.authService.getAuthUser().subscribe(value => this.user = value)
   }
 }
+// if (value) {
+//   this.user = value
+// } else {
+//   this.authService.login(this.user).subscribe(value => this.user = value)
+// }

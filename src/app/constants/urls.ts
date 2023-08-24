@@ -8,10 +8,10 @@ const users = `${API}/users`
 
 const urls = {
   auth: {
-    login: auth,
+    auth: auth,
     refresh:`${auth}/refresh`,
     register: users,
-    auth: `${auth}/login`
+    login: `${auth}/login`
   },
   students: {
     full: students,

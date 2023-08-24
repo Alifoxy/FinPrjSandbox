@@ -38,7 +38,7 @@ export class MainInterceptor implements HttpInterceptor {
             this.isRefreshing = false
             this.authService.deleteTokens()
             this.matDialog.closeAll()
-            this.router.navigate(['auth', 'login'], {queryParams: {sessionExp: true}})
+            this.router.navigate(['auth', 'login'], {queryParams: {sessionExp: true}}).then()
             return throwError(() => res)
           }
 
