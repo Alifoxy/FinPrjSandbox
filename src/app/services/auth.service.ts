@@ -21,8 +21,7 @@ export class AuthService {
     return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
       tap((tokens) => {
            this._setTokens(tokens)
-           // this.login(user).subscribe(user => this.setAuthUser(user))
-           this.authUserSubject.next(user)
+           this.auth().subscribe(user => this.setAuthUser(user))
       })
     )
   }
