@@ -12,13 +12,12 @@ export class AuthService {
   private readonly _accessTokenKey = 'access'
   private readonly _refreshTokenKey = 'refresh'
   private authUserSubject = new BehaviorSubject<IAuth | null>(null)
-  public user: Observable<IAuth>;
 
   constructor(private httpClient: HttpClient) {
   }
 
   login(user: IAuth): Observable<ITokens> {
-    return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
+    return this.httpClient.post<ITokens>(urls.auth.login, JSON.stringify(user)).pipe(
       tap((tokens) => {
            this._setTokens(tokens)
            this.auth().subscribe(user => this.setAuthUser(user))

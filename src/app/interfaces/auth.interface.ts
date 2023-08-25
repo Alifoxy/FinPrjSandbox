@@ -1,4 +1,4 @@
 export interface IAuth {
-  email:'admin@gmail.com';
-  password: 'admin';
+  email: string;
+  password: string;
 }
