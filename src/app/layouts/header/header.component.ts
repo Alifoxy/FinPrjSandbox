@@ -1,14 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {IAuth} from "../../interfaces";
+import {IAuth, ITokens} from "../../interfaces";
 import {AuthService} from "../../services";
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
 
+
+export class HeaderComponent implements OnInit {
 
   user: IAuth;
 
@@ -19,9 +21,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getAuthUser().subscribe(value=>{
     if (value) {
-   this.user = value
+      this.user = value
     } else {
-      this.authService.login(this.user).subscribe(value => this.user = value)
+      this.authService.auth().subscribe(value => this.user = value)
     }
     })
   }
