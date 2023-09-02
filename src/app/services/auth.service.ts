@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IAuth, IStudent, ITokens} from "../interfaces";
-import {BehaviorSubject, map, Observable, tap} from "rxjs";
+import {IAuth, ITokens} from "../interfaces";
+import {BehaviorSubject, Observable, tap} from "rxjs";
 import {urls} from "../constants";
-import {IPagination} from "../interfaces/pagination.interface";
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,16 +26,16 @@ export class AuthService {
   }
 
   auth(): Observable<IAuth> {
-    return this.httpClient.get<IAuth>(urls.auth.auth)
+    return this.httpClient.get<IAuth>(urls.auth.login)
   }
 
-  refresh(refresh: string): Observable<ITokens> {
-    return this.httpClient.post<ITokens>(urls.auth.refresh, {refresh}).pipe(
-      tap((tokens) => {
-        this._setTokens(tokens)
-      })
-    )
-  }
+  // refresh(refresh: string): Observable<ITokens> {
+  //   return this.httpClient.post<ITokens>(urls.auth.refresh, {refresh}).pipe(
+  //     tap((tokens) => {
+  //       this._setTokens(tokens)
+  //     })
+  //   )
+  // }
 
 
   getAuthUser(): Observable<IAuth | null> {

@@ -9,7 +9,6 @@ const users = `${API}/users`
 const urls = {
   auth: {
     auth: auth,
-    refresh:`${auth}/refresh`,
     register: users,
     login: `${auth}/login`
   },
