@@ -29,13 +29,13 @@ export class AuthService {
     return this.httpClient.get<IAuth>(urls.auth.login)
   }
 
-  // refresh(refresh: string): Observable<ITokens> {
-  //   return this.httpClient.post<ITokens>(urls.auth.refresh, {refresh}).pipe(
-  //     tap((tokens) => {
-  //       this._setTokens(tokens)
-  //     })
-  //   )
-  // }
+  refresh(refresh: string): Observable<ITokens> {
+    return this.httpClient.post<ITokens>(urls.auth.refresh, {refresh}).pipe(
+      tap((tokens) => {
+        this._setTokens(tokens)
+      })
+    )
+  }
 
 
   getAuthUser(): Observable<IAuth | null> {
