@@ -34,7 +34,7 @@ export class MainInterceptor implements HttpInterceptor {
             return this.handle401Error(request, next, refreshToken)
           }
 
-          if (res.url === urls.auth.refresh) {
+          if (res.url === urls.auth.login) {
             this.isRefreshing = false
             this.authService.deleteTokens()
             this.matDialog.closeAll()
