@@ -10,21 +10,23 @@ import {AuthService} from "../../services";
 })
 
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  user: IAuth;
-
-
-  constructor(private authService: AuthService) {
-  }
-
-  ngOnInit(): void {
-    this.authService.getAuthUser().subscribe(value=>{
-    if (value) {
-      this.user = value
-    } else {
-      this.authService.auth().subscribe(value => this.user = value)
-    }
-    })
-  }
 }
+
+//   user: IAuth;
+//
+//
+//   constructor(private authService: AuthService) {
+//   }
+//
+//   ngOnInit(): void {
+//     this.authService.getAuthUser().subscribe(value=>{
+//     if (value) {
+//       this.user = value
+//     } else {
+//       this.authService.auth().subscribe(value => this.user = value)
+//     }
+//     })
+//   }
+// }

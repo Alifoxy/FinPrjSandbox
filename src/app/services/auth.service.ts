@@ -20,13 +20,13 @@ export class AuthService {
     return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
       tap((tokens) => {
            this._setTokens(tokens)
-           this.auth().subscribe(user => this.setAuthUser(user))
+           // this.auth().subscribe(user => this.setAuthUser(user))
       })
     )
   }
 
   auth(): Observable<IAuth> {
-    return this.httpClient.get<IAuth>(urls.auth.login)
+    return this.httpClient.get<IAuth>(urls.auth.auth)
   }
 
   refresh(refresh: string): Observable<ITokens> {
