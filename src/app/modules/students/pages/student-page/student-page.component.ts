@@ -3,6 +3,7 @@ import {IStudent} from "../../../../interfaces";
 import {StudentService} from "../../../../services";
 import {PageEvent} from "@angular/material/paginator";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MainInterceptor} from "../../../../main.interceptor";
 
 @Component({
   selector: 'app-student-page',
