@@ -17,6 +17,7 @@ export class StudentPageComponent {
   pageSize = 10;
   showFirstLastButtons = true;
 
+
   constructor(private studentService: StudentService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
