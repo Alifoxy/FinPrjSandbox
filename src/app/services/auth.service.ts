@@ -16,13 +16,26 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
   }
 
-  login(user: IAuth): Observable<ITokens> {
-    return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
+  login(admin: IAuth): Observable<ITokens> {
+    return this.httpClient.post<ITokens>(urls.auth.login, admin).pipe(
       tap((tokens) => {
            this._setTokens(tokens)
-           // this.auth().subscribe(user => this.setAuthUser(user))
+           this.auth().subscribe(user => this.setAuthUser(user))
       })
     )
+  }
+
+  createUserByAdmin(user: IAuth): Observable<ITokens> {
+    return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
+      tap((tokens) => {
+        this._setTokens(tokens)
+        this.auth().subscribe(user => this.setAuthUser(user))
+      })
+    )
+  }
+
+  loginAdmin(admin: IAuth): Observable<any> {
+    return this.httpClient.post<any>(urls.auth.login, admin)
   }
 
   auth(): Observable<IAuth> {
@@ -46,7 +59,7 @@ export class AuthService {
     this.authUserSubject.next(user)
   }
 
-  private _setTokens({access, refresh}: ITokens): void {
+  private _setTokens({access,refresh}: ITokens): void {
     localStorage.setItem(this._accessTokenKey, access)
     localStorage.setItem(this._refreshTokenKey, refresh)
   }
@@ -64,4 +77,8 @@ export class AuthService {
     localStorage.removeItem(this._refreshTokenKey)
   }
 
+  // private _addTokens({access, refresh}: ITokens): void {
+  //   localStorage.setItem(this._accessTokenKey, JSON.stringify(access))
+  //   localStorage.setItem(this._refreshTokenKey, JSON.stringify(refresh))
+  // }
 }
